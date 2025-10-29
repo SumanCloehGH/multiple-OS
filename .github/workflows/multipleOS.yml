@@ -24,7 +24,10 @@ jobs:
          if: runner.os!='Windows'
          run: date
 
+      -  name: Step 3 - Show OS Info (Windows only)
+         if: runner.os == 'Windows'
+         run: systeminfo
 
-
-    #   -  name: Step 3 - Show OS Info
-    #      run: uname -a 
+      -  name: Step 3 - show OS Info (not Windows)
+         if: runner.os != 'Windows'
+         run: uname -a 
