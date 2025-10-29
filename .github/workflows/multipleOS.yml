@@ -16,8 +16,15 @@ jobs:
       -  name: Step 1 - Hello
          run: echo "Hello from  ${{ matrix.os }}"
 
-    #   -  name: Step 2 - Print Date
-    #      run: Date
+      -  name: Step 2 - Print Date
+         run: |
+           if [ "${{ matrix.os }}"  == "windows-latest" ]; then
+             powershell -Command "Get-Date"
+           else
+             date
+           fi
+
+
 
     #   -  name: Step 3 - Show OS Info
     #      run: uname -a 
