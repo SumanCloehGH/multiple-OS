@@ -1,0 +1,23 @@
+name: run commands in multiple operating systems
+
+on: push
+
+jobs:
+  my-job:
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{matrix.os}}
+
+    steps:
+      -  name: checkout repository
+         uses: actions/checkout@v3
+
+      -  name: Step 1 - Hello
+         run: echo "Hello from " ${{matrix.os}}
+
+      -  name: Step 2 - Print Date
+         run: Date
+
+      -  name: Step 3 - Show OS Info
+         run: uname -a 
